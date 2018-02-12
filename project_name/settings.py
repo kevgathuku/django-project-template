@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", 'override me')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.getenv("NODEBUG") is None else False
 
-ALLOWED_HOSTS = ["web", "localhost"] if os.getenv("NODEBUG") is None else [".yourdomain.com"]
+ALLOWED_HOSTS = ["web", "localhost", "127.0.0.1"] if os.getenv("NODEBUG") is None else [".yourdomain.com"]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
