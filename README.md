@@ -11,9 +11,8 @@ provide a useful setup. Most of my projects are deployed to Heroku, so this is o
 - [django-extensions](http://django-extensions.readthedocs.org) for the various useful commands and things.
 - [ShortUUID](https://github.com/skorokithakis/shortuuid), because I end up using it most of the time.
 - Secure by default (various things won't work on production without TLS).
-- Runs under docker-compose by default, with a PostgreSQL and Redis instance (configured as a cache and session
   backend).
-- Can also run outside of docker-compose using SQLite, for when you aren't using Postgres-specific features yet.
+- Runs using SQLite by default, for when you aren't using Postgres-specific features yet.
 - Other things I'm forgetting now.
 
 
@@ -28,17 +27,7 @@ django-admin.py startproject \
   project_name
 ```
 
-That's it! You're ready to run the project with `docker-compose` and add that "container expert" bullet point to your
-CV:
-
-```bash
-$ docker-compose up
-```
-
-You should be able to access your project under [http://localhost/](http://localhost/). I like it running on port 80,
-and you can assign a different hostname in your `/etc/hosts` if you want it to look a bit better.
-
-If you don't want to bother with `docker-compose` yet, you can run it locally:
+You can then run it locally:
 
 ```bash
 $ pipenv install --dev

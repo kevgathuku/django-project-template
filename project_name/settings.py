@@ -82,22 +82,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
-if os.getenv("IN_DOCKER"):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': "postgres",
-            'USER': 'postgres',
-            'PASSWORD': 'password',
-            'HOST': "db",
-            'PORT': 5432,
-        }
-    }
-
-    SESSION_CACHE_ALIAS = "default"
-    SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-    SESSION_COOKIE_AGE = 365 * 24 * 60 * 60
-elif os.getenv("DATABASE_URL"):
+if os.getenv("DATABASE_URL"):
     # Running under Dokku.
     USER, PASSWORD, HOST, PORT, NAME = re.match(
         "^postgres://(?P<username>.*?)\:(?P<password>.*?)\@(?P<host>.*?)\:(?P<port>\d+)\/(?P<db>.*?)$",
